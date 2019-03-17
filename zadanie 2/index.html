@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Zadanie 2</title>
+		<style>
+			.image {
+				height: 200px;
+			}
+			.left {
+				float: left
+			}
+			.right {
+				float: right
+			}
+			.right li {
+				list-style-type: none;
+			}
+			.center {
+				text-align: center;
+			}
+			.gray-back {
+				background-color: lightgrey;
+			}
+			.green-back {
+				background-color: lightgreen;
+			}
+			.enter .jobtitle {
+				color: red;
+			}
+			.enter {
+			    border-color: #929c83;
+				border-style: dashed;
+				padding-left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu"></div>
+		<div>
+			<div class="present">
+				<table>
+					<tr>
+						<td><img class="image" src="logo.jpg" /></td>
+						<td>
+							<h2 class="center">Krzysztof Grzesiak</h2>
+							<div class="left">
+								<ul>
+									<li>Email: </li>
+									<li>Telefon: </li>
+									<li>Data urodzenia: </li>
+									<li>Miasto: </li>
+									<li>Kraj: </li>
+								</ul>
+							</div>
+							<div class="right">
+								<ul>
+									<li>grzesiak8@gmail.com </li>
+									<li>+48 508305804 </li>
+									<li>23.08.1987 </li>
+									<li>Gniezno </li>
+									<li>Polska </li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="exp">
+				<h2 class="center gray-back">Doświadczenie zawodowe</h2>
+				<div class="enter">
+					<div class="jobtitle">Programista PHP</div>
+					<div class="range">02/2018 - obecnie</div>
+					<div class="company">R22 S.A.</div>
+				</div>
+				<br /> 
+				<div class="enter">
+					<div class="jobtitle">Programista PHP</div>
+					<div class="range">09/2016 - 01/2018</div>
+					<div class="company">Spider Sp. z o.o.</div>
+				</div>
+				<br />
+				<div class="enter">
+					<div class="jobtitle">Informatyk, Programista PHP</div>
+					<div class="range">09/2013 - 08/2016</div>
+					<div class="company">Mar-Com</div>
+				</div>
+				<br />
+				<div class="enter">
+					<div class="jobtitle">Programista ERP Gardens</div>
+					<div class="range">01/2013 - 05/2013</div>
+					<div class="company">Impakt Sp. z o.o.</div>
+				</div>
+			</div>
+			<div class="edu">
+				<h2 class="center green-back">Edukacja</h2>
+				<div class="enter">
+					<div class="edutitle">Wyższa Szkoła Bankowa w Poznaniu</div>
+					<div class="range">10/2010 - 06/2013, Informatyka i ekonometria</div>
+				</div>
+				<br />
+				<div class="enter">
+					<div class="edutitle">Szkoła Internetu i Informatyki, TEB Edukacja</div>
+					<div class="range">09/2008 - 06/2010, Technik informatyk</div>
+				</div>
+			</div>
+		</div>
+		<br />
+		<br />
+		<br />
+		<form method="POST" action="">
+		  Imię:<br>
+		  <input type="text" name="imie">
+		  <br>
+		  Nazwisko:<br>
+		  <input type="text" name="nazwisko">
+		  <br>
+		  Wiek:<br>
+		  <input type="text" name="wiek">
+		  <br>
+		  Płeć:<br>
+		  <select name="plec">
+			<option value="null">Wybierz</option>
+			<option value="m">Mężczyzna</option>
+			<option value="k">Kobieta</option>
+		  </select>
+		  <br>
+		  Zgoda na przetwarzanie danych osobowych:<br>
+		  <input type="checkbox" name="zgoda">
+		  <br><br>
+		  <input type="submit" value="Submit">
+		</form> 
+	</body>
+</html>
