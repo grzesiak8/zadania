@@ -17,5 +17,5 @@ INSERT INTO `menu`(`name`, `parent_id`) VALUES ('Podkategoria 1', '1');
 INSERT INTO `menu`(`name`, `parent_id`) VALUES ('Podkategoria 1.1', '2');
 INSERT INTO `menu`(`name`, `parent_id`) VALUES ('Podkategoria 1.2', '2');
 INSERT INTO `menu`(`name`, `parent_id`) VALUES ('Podkategoria 2', '1');
-INSERT INTO `menu`(`name`, `parent_id`) VALUES ('Podkategoria 2.1', '2');
-INSERT INTO `menu`(`name`, `parent_id`) VALUES ('Podkategoria 2.2', '2');
+INSERT INTO `menu`(`name`, `parent_id`) VALUES ('Podkategoria 2.1', '5');
+INSERT INTO `menu`(`name`, `parent_id`) VALUES ('Podkategoria 2.2', '5');
