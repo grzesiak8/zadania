@@ -15,12 +15,6 @@ class ProductRepository extends EntityRepository {
 	}
 	public function getByName($name)
 	{
-		return $this->_em->createQueryBuilder('o')
-				->select('o')
-				->from('App\Product','o')
-				->where('o.name LIKE ?1')
-				->setParameter('1', '%'.$name.'%')
-				->getQuery()
-				->getResult();
+		return $this->findBy(['name' => $name]);
 	}
 }
