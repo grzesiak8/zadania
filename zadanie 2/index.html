@@ -108,27 +108,106 @@
 		<br />
 		<br />
 		<br />
-		<form method="POST" action="">
-		  Imię:<br>
-		  <input type="text" name="imie">
-		  <br>
-		  Nazwisko:<br>
-		  <input type="text" name="nazwisko">
-		  <br>
-		  Wiek:<br>
-		  <input type="text" name="wiek">
-		  <br>
-		  Płeć:<br>
-		  <select name="plec">
-			<option value="null">Wybierz</option>
-			<option value="m">Mężczyzna</option>
-			<option value="k">Kobieta</option>
-		  </select>
-		  <br>
-		  Zgoda na przetwarzanie danych osobowych:<br>
-		  <input type="checkbox" name="zgoda">
-		  <br><br>
-		  <input type="submit" value="Submit">
-		</form> 
+		<form method="POST" action="" onsubmit="return valid();">
+			  Imię:<br>
+			  <input id="imie" type="text" name="imie">
+			  <br>
+			  Nazwisko:<br>
+			  <input id="nazwisko" type="text" name="nazwisko">
+			  <br>
+			  Wiek:<br>
+			  <input id="wiek" type="text" name="wiek">
+			  <br>
+			  Płeć:<br>
+			  <select id="plec" name="plec">
+				<option value="x">Wybierz</option>
+				<option value="m">Mężczyzna</option>
+				<option value="k">Kobieta</option>
+			  </select>
+			  <br>
+			  Zgoda na przetwarzanie danych osobowych:<br>
+			  <input id="zgoda" type="checkbox" name="zgoda" value="1">
+			  <br><br>
+			  <input type="submit" value="Submit">
+		</form>
+		<script>
+			var rules = [];
+			rules.push({id: "imie", rule: "required", message: "Pole wymagane" });
+			rules.push({id: "nazwisko", rule: "required", message: "Pole wymagane"});
+			rules.push({id: "wiek", rule: "range", minValue: 18, maxValue: 99, message: "Pole musi mieć wartość z zakresu 18 a 99 lat"});
+			rules.push({id: "plec", rule: "notValue", value: "x", message: "Należy wybrać jakaś wartość"});
+			rules.push({id: "zgoda", rule: "checkboxValue", value: "1", message: "Zgoda jest wymagana do zapisania formularza"});
+		
+			function valid()
+			{
+				var errors = document.getElementsByClassName("error");
+				for (var i = 0; i < errors.length; i++) {
+					errors[i].parentNode.removeChild(errors[i]);
+				}
+				var isValid = true;
+				
+				rules.forEach(function(element, index, array) {
+					var result;
+					if(element.rule == 'required') {
+						result = validRequired(element.id);
+					} else if(element.rule == 'range') {
+						result = validRange(element.id, element.minValue, element.maxValue);
+					} else if(element.rule == 'notValue') {
+						result = validNotValue(element.id, element.value);
+					} else if(element.rule == 'checkboxValue') {
+						result = validCheckboxValue(element.id, element.value);
+					}
+					if(result === false) {
+						isValid = false;
+						addMessage(element.id, element.message);
+					}
+				});
+			
+				return false;
+			}
+			function addMessage(id, message)
+			{
+				var element = document.getElementById(id);
+				var p = document.createElement("p");
+				p.classList.add("error");
+				p.innerHTML = message;
+				element.after(p);
+			}
+			function validRequired(id)
+			{
+				var element = document.getElementById(id);
+				if (element.value == '') {
+					return false;
+				}
+				return true;
+			}
+			function validRange(id, minValue, maxValue)
+			{
+				var element = document.getElementById(id);
+				if (element.value == '') {
+					return false;
+				}
+				if (element.value >= minValue && element.value <= maxValue) {
+					return true;
+				}
+				return false;
+			}
+			function validNotValue(id, value)
+			{
+				var element = document.getElementById(id);
+				if (element.value == value) {
+					return false;
+				}
+				return true;
+			}
+			function validCheckboxValue(id, value)
+			{
+				var element = document.getElementById(id);
+				if (element.checked == true && element.value == value) {
+					return true;
+				}
+				return false;
+			}
+		</script>
 	</body>
 </html>
