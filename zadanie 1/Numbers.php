@@ -41,4 +41,8 @@ class Numbers {
 	{
 		return $this->even;
 	}
+	public function getOddsNumbers()
+	{
+		return $this->odds;
+	}
 }
