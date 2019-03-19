@@ -7,6 +7,11 @@
 			.image {
 				height: 200px;
 			}
+			.error {
+				display: inline;
+				color: red;
+				padding-left: 15px;
+			}
 			.left {
 				float: left
 			}
@@ -140,15 +145,13 @@
 		
 			function valid()
 			{
-				var errors = document.getElementsByClassName("error");
-				for (var i = 0; i < errors.length; i++) {
-					errors[i].parentNode.removeChild(errors[i]);
-				}
+				removeElementsByClass('error');
+				
 				var isValid = true;
 				
 				rules.forEach(function(element, index, array) {
 					var result;
-					if(element.rule == 'required') {
+					if (element.rule == 'required') {
 						result = validRequired(element.id);
 					} else if(element.rule == 'range') {
 						result = validRange(element.id, element.minValue, element.maxValue);
@@ -170,6 +173,8 @@
 				var element = document.getElementById(id);
 				var p = document.createElement("p");
 				p.classList.add("error");
+				p.classList.add("inline");
+				p.classList.add("red");
 				p.innerHTML = message;
 				element.after(p);
 			}
@@ -207,6 +212,12 @@
 					return true;
 				}
 				return false;
+			}
+			function removeElementsByClass(className){
+				var elements = document.getElementsByClassName(className);
+				while(elements.length > 0){
+					elements[0].parentNode.removeChild(elements[0]);
+				}
 			}
 		</script>
 	</body>
