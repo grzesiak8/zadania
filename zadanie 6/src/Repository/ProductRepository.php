@@ -2,19 +2,35 @@
 namespace App\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use App\Entity\Product;
 
 class ProductRepository extends EntityRepository {
 	
-	public function getCountAvail()
+	public function getCountAvailProducts()
 	{
 		return count($this->findBy(['availability' => true]));
 	}
-	public function getNonAvail()
+	public function getNonAvailProducts()
 	{
 		return $this->findBy(['availability' => false]);
 	}
-	public function getByName($name)
+	public function getProductsByName($name)
 	{
-		return $this->findBy(['name' => $name]);
+		$entityManager = $this->getEntityManager();
+
+		$query = $entityManager
+					->getConnection()
+					->query( '
+						SELECT * 
+						FROM product WHERE name LIKE \'%'.$name.'%\'' )
+					->fetchAll();
+		$temp = [];
+		if(count($query) > 0) {
+			foreach($query as $row) {
+				$product = $this->_em->getRepository(Product::class)->find($row['id']);
+				$temp[] = $product;
+			}
+		}
+		return $temp;
 	}
 }
