@@ -1,9 +1,15 @@
 <?php
+declare(strict_types=1);
+
 class Numbers {
 	private $odds = [];
 	private $even = [];
-	
-	public function addNumber($number)
+
+    /**
+     * @param int $number
+     * @throws Exception
+     */
+	public function addNumber(int $number)
 	{
 		if(is_numeric($number) && $number > 0) {
 			if ($number % 2 == 0) {
@@ -15,7 +21,11 @@ class Numbers {
 			throw new \Exception('Wrong number');
 		}
 	}
-	public function getResult()
+
+    /**
+     * @return string
+     */
+	public function getResult() : string
 	{
 		$evenResult = 0;
 		$oddsResult = 0;
@@ -37,11 +47,19 @@ class Numbers {
 			return 'Dwukrotność liczb nieparzystych jest większa';
 		}
 	}
-	public function getEvenNumbers()
+
+    /**
+     * @return array
+     */
+	public function getEvenNumbers() : array
 	{
 		return $this->even;
 	}
-	public function getOddsNumbers()
+
+    /**
+     * @return array
+     */
+	public function getOddsNumbers() : array
 	{
 		return $this->odds;
 	}
