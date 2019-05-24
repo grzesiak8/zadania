@@ -9,7 +9,7 @@ class Numbers {
      * @param int $number
      * @throws Exception
      */
-	public function addNumber(int $number)
+	public function addNumber(int $number) : void
 	{
 		if(is_numeric($number) && $number > 0) {
 			if ($number % 2 == 0) {
